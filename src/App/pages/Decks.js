@@ -46,9 +46,9 @@ class Decks extends React.Component{
       )
     }
     return(
-      <div className='inline-wrapper'>
+      <div className='content'>
         <h1>Decks</h1>
-        <Route exact path='/decks' render={() => list}/>
+        <Route exact path='/decks' render={() => <div className='flex'>{list}</div>}/>
         <Route exact path='/decks/:faction' render={({ match }) => <FactionDetailed match={match} decks={this.state.decks}/>}/>
         <Route path='/decks/:faction/:agenda' render={({ match }) => <SpecificDeck match={match} decks={this.state.decks}/>}/>
       </div>

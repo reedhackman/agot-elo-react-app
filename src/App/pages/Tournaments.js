@@ -4,7 +4,7 @@ import { Route, Link } from 'react-router-dom'
 class Tournaments extends React.Component{
   render(){
     return(
-      <div className='App'>
+      <div className='content'>
         <h1>Tournaments</h1>
         <h2>Coming Soon... ish</h2>
         <h3>but less soon than the decks page</h3>

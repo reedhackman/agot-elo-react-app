@@ -37,8 +37,8 @@ export default class extends React.Component{
           <thead>
             <tr>
               <th>Agenda</th>
-              <th>Win Percent</th>
-              <th>Games Played</th>
+              <th>Win %</th>
+              <th># Played</th>
             </tr>
           </thead>
           <tbody>

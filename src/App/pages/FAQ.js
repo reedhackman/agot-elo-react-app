@@ -3,7 +3,7 @@ import React from 'react'
 export default class extends React.Component{
   render(){
     return(
-      <div className='App'>
+      <div className='content'>
         <h1>Questions that Might Be Asked</h1>
         <section>
           <h2>What upgrades do you have planned?</h2>

@@ -141,7 +141,7 @@ class Players extends React.Component{
       change: this.handleChange
     }
     return(
-      <div className='App'>
+      <div className='content'>
         <h1>Players</h1>
         <Route exact path='/players' render={() => {
           if(this.state.playerlist.length){
