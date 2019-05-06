@@ -5,7 +5,10 @@ export default class extends React.Component{
     let faction = this.props.match.params.faction
     let agenda = this.props.match.params.agenda
     return(
-      <div>{faction + ' ' + agenda}</div>
+      <div>
+        <h2>{faction + ' ' + agenda}</h2>
+        <h3>Coming Soon</h3>
+      </div>
     )
   }
 }

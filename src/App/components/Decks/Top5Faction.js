@@ -24,21 +24,21 @@ export default class extends React.Component{
       console.log(decks)
       list.push(
         <tr key={i}>
-          <td className='table-name'><Link to={`/decks/${this.props.faction}/${decks[i].agenda}`}>{decks[i].agenda}</Link></td>
-          <td className='table-percent'>{(100 * decks[i].percent).toFixed(1)}</td>
-          <td className='table-played'>{decks[i].played}</td>
+          <td className='decks-table-name'><Link to={`/decks/${this.props.faction}/${decks[i].agenda}`}>{decks[i].agenda}</Link></td>
+          <td className='decks-table-percent'>{(100 * decks[i].percent).toFixed(1)}</td>
+          <td className='decks-table-played'>{decks[i].played}</td>
         </tr>
       )
     }
     return(
       <div className='top5faction'>
         <h2><Link to={`/decks/${this.props.faction}`}>{this.props.faction}</Link></h2>
-        <table>
+        <table className='top5faction-table'>
           <thead>
             <tr>
-              <th>Agenda</th>
-              <th>Win %</th>
-              <th># Played</th>
+              <th className='decks-table-name'>Agenda</th>
+              <th className='decks-table-percent'>Win %</th>
+              <th className='decks-table-played'># Played</th>
             </tr>
           </thead>
           <tbody>

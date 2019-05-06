@@ -1,0 +1,46 @@
+tbody tr:hover{
+  background-color: lightgray;
+}
+
+table{
+  border-collapse: collapse;
+  margin: auto;
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  width: 100%;
+  table-layout: fixed;
+}
+
+th{
+  border: 1px solid black;
+  padding: 10px;
+}
+
+td{
+  border: 1px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.players-table-name{
+  width: 61%;
+}
+
+
+.players-table-percent, .players-table-played, .players-table-rating{
+  width: 13%;
+}
+
+.decks-table-name{
+  width: 50%;
+}
+
+.decks-table-percent, .decks-table-played{
+  width: 25%;
+}
+
+.top5faction-table{
+  width: 400px;
+}

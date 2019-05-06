@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Route, Switch } from 'react-router-dom'
 
-import './App.css';
+import './styles/App.css'
+import './styles/table.css'
+import './styles/buttons.css'
 
-import Home from './pages/Home';
+import Home from './pages/Home'
 import Players from './pages/Players'
 import Decks from './pages/Decks'
 import Tournaments from './pages/Tournaments'
@@ -33,8 +35,8 @@ class App extends Component {
       <Switch>
         <App/>
       </Switch>
-    );
+    )
   }
 }
 
-export default App;
+export default App

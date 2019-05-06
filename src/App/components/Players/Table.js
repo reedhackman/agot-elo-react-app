@@ -22,6 +22,7 @@ export default class extends React.Component{
           value={this.props.state.mingames}
           onChange={this.props.handlers.mingames}
         />
+        <span>Minimum number of games played</span>
       </div>
     )
     let search = (
@@ -33,6 +34,7 @@ export default class extends React.Component{
             onChange={this.props.handlers.search}
             change='input'
           />
+          <span>Search only players whose names match this string</span>
       </div>
     )
     data.sort((a, b) => {
@@ -70,10 +72,10 @@ export default class extends React.Component{
       let player = rows[j]
       list.push(
         <tr key={player.name} className='table-row'>
-          <td className='tablename'><Link to={`/players/${player.id}`}>{player.name}</Link></td>
-          <td className='tablerating'>{Math.round(player.rating)}</td>
-          <td className='tablepercent'>{(player.percent * 100).toFixed(1)}</td>
-          <td className='tableplayed'>{player.played}</td>
+          <td className='players-table-name'><Link to={`/players/${player.id}`}>{player.name}</Link></td>
+          <td className='players-table-rating'>{Math.round(player.rating)}</td>
+          <td className='players-table-percent'>{(player.percent * 100).toFixed(1)}</td>
+          <td className='players-table-played'>{player.played}</td>
         </tr>
       )
       j++
@@ -82,13 +84,13 @@ export default class extends React.Component{
       <div>
         {search}
         {minbox}
-        <table>
+        <table className='players-table'>
           <thead>
             <tr>
-              <th className='tablename'><button onClick={this.props.handlers.sortby} value='name'>Name</button></th>
-              <th className='tablerating'><button onClick={this.props.handlers.sortby} value='rating'>Rating</button></th>
-              <th className='tablepercent'><button onClick={this.props.handlers.sortby} value='percent'>Win Percent</button></th>
-              <th className='tableplayed'><button onClick={this.props.handlers.sortby} value='played'>Games Played</button></th>
+              <th className='players-table-name'><button onClick={this.props.handlers.sortby} value='name'>Name</button></th>
+              <th className='players-table-rating'><button onClick={this.props.handlers.sortby} value='rating'>Rating</button></th>
+              <th className='players-table-percent'><button onClick={this.props.handlers.sortby} value='percent'>Win Percent</button></th>
+              <th className='players-table-played'><button onClick={this.props.handlers.sortby} value='played'>Games Played</button></th>
             </tr>
           </thead>
           <tbody>
