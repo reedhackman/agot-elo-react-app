@@ -1,0 +1,24 @@
+.navbar{
+  background: #8eaec2;
+  color: white;
+  text-align: center;
+  height: 2.5rem;
+  min-height: min-content;
+}
+
+.navbar-content{
+  width: 978px;
+  margin: auto;
+  display: flex;
+}
+
+.navbar-logo{
+  width: 50%;
+}
+
+.navbar-links{
+  width: 50%;
+  align-self: center;
+  justify-content: flex-end;
+  display: flex;
+}

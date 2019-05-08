@@ -25,22 +25,74 @@ td{
 }
 
 .players-table-name{
-  width: 61%;
+  width: 52%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  margin-left: 10px;
 }
 
-
 .players-table-percent, .players-table-played, .players-table-rating{
-  width: 13%;
+  width: 16%;
 }
 
 .decks-table-name{
-  width: 50%;
+  width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
 }
 
 .decks-table-percent, .decks-table-played{
-  width: 25%;
+  width: 20%;
 }
 
 .top5faction-table{
   width: 400px;
+}
+
+.table-nav-buttons{
+  margin: 10px;
+}
+
+.table-filter-box{
+  text-align: left;
+}
+
+.table-wrapper{
+  display: block;
+}
+
+.player-decks-faction{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  width: 21%;
+}
+
+.player-decks-agenda{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  width: 31%;
+}
+
+.player-decks-percent, .player-decks-played, .player-decks-tournament{
+  width: 16%;
+}
+
+.player-opponent-name{
+  width: 52%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.player-opponent-percent, .player-opponent-played, .player-opponent-rating{
+  width: 16%;
 }

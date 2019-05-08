@@ -39,10 +39,10 @@ export default class extends React.Component{
       let opponent = opponents[p_id]
       rows.push(
         <tr key={p_id}>
-          <td><Link to={`/players/${p_id}`} onClick={this.props.updateId} value={p_id}>{this.props.players[p_id].name}</Link></td>
-          <td>{(100 * opponent.wins / (opponent.wins + opponent.losses)).toFixed(1)}</td>
-          <td>{opponent.wins + opponent.losses}</td>
-          <td>{Math.round(this.props.players[p_id].rating)}</td>
+          <td className='player-opponent-name'><Link to={`/players/${p_id}`} onClick={this.props.updateId} value={p_id}>{this.props.players[p_id].name}</Link></td>
+          <td className='player-opponent-percent'>{(100 * opponent.wins / (opponent.wins + opponent.losses)).toFixed(1)}</td>
+          <td className='player-opponent-played'>{opponent.wins + opponent.losses}</td>
+          <td className='player-opponent-rating'>{Math.round(this.props.players[p_id].rating)}</td>
         </tr>
       )
     }
@@ -52,10 +52,10 @@ export default class extends React.Component{
         <table>
           <thead>
             <tr>
-              <th>Opponent Name</th>
-              <th>Win Percent</th>
-              <th>Times Played</th>
-              <th>Current Rating</th>
+              <th className='player-opponent-name'>Opponent Name</th>
+              <th className='player-opponent-percent'>Win Percent</th>
+              <th className='player-opponent-played'>Times Played</th>
+              <th className='player-opponent-rating'>Current Rating</th>
             </tr>
           </thead>
           <tbody>

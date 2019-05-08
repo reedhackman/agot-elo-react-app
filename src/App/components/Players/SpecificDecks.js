@@ -59,11 +59,11 @@ export default class extends React.Component{
       for(let agenda in decks[faction]){
         rows.push(
           <tr key={faction + agenda}>
-            <td>{faction}</td>
-            <td>{agenda}</td>
-            <td>{(100 * decks[faction][agenda].wins / (decks[faction][agenda].wins + decks[faction][agenda].losses)).toFixed(1)}</td>
-            <td>{decks[faction][agenda].wins + decks[faction][agenda].losses}</td>
-            <td>{decks[faction][agenda].tournaments.length}</td>
+            <td className='player-decks-faction'>{faction}</td>
+            <td className='player-decks-agenda'>{agenda}</td>
+            <td className='player-decks-percent'>{(100 * decks[faction][agenda].wins / (decks[faction][agenda].wins + decks[faction][agenda].losses)).toFixed(1)}</td>
+            <td className='player-decks-played'>{decks[faction][agenda].wins + decks[faction][agenda].losses}</td>
+            <td className='player-decks-tournament'>{decks[faction][agenda].tournaments.length}</td>
           </tr>
         )
       }
@@ -74,11 +74,11 @@ export default class extends React.Component{
         <table>
           <thead>
             <tr>
-              <th>Faction</th>
-              <th>Agenda</th>
-              <th>Win Percent</th>
-              <th>Games Played</th>
-              <th>Tournaments Entered</th>
+              <th className='player-decks-faction'>Faction</th>
+              <th className='player-decks-agenda'>Agenda</th>
+              <th className='player-decks-percent'>Win %</th>
+              <th className='player-decks-played'># Games</th>
+              <th className='player-decks-tournament'># Tournaments</th>
             </tr>
           </thead>
           <tbody>

@@ -7,11 +7,7 @@ export default class extends React.Component{
         <h1>Questions that Might Be Asked</h1>
         <section>
           <h2>What upgrades do you have planned?</h2>
-          <p>Go fuck yourself, it's none of your business</p>
-        </section>
-        <section>
-          <h2>Is that an appropriate question for a FAQ page?</h2>
-          <p>No, but I don't like criticism so fuck you some more!</p>
+          <p>I will be fleshing out the decks page, adding detailed information about specific decks (such as winrates against other decks and the ability to filter the deck's performance based on a date range). I will also be adding a tournaments page, where players can see which tournaments occurred and the elo change for each player in the tournament</p>
         </section>
       </div>
     )

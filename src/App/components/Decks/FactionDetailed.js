@@ -73,9 +73,9 @@ export default class extends React.Component{
         <table>
           <thead>
             <tr>
-              <th><button onClick={this.handleClick} value='name'>Agenda</button></th>
-              <th><button onClick={this.handleClick} value='percent'>Win Percent</button></th>
-              <th><button onClick={this.handleClick} value='played'>Games Played</button></th>
+              <th><button onClick={this.handleClick} value='name' className='button-sort'>Agenda</button></th>
+              <th><button onClick={this.handleClick} value='percent' className='button-sort'>Win Percent</button></th>
+              <th><button onClick={this.handleClick} value='played' className='button-sort'>Games Played</button></th>
             </tr>
           </thead>
           <tbody>
