@@ -6,51 +6,31 @@ import FactionDetailed from '../components/Decks/FactionDetailed'
 import SpecificDeck from '../components/Decks/SpecificDeck'
 
 class Decks extends React.Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      decks: {},
-      deckRows: []
-    }
-  }
-  async componentDidMount(){
-    const res = await fetch('http://agot-elo-express-backend-env.jdzgb4sgag.us-west-2.elasticbeanstalk.com/api/decks')
-    const data = await res.json()
-    let decks = {}
-    data.forEach((deck) => {
-      if(!(decks[deck.faction])){
-        decks[deck.faction] = {
-          [deck.agenda]: {
-            wins: deck.wins,
-            losses: deck.losses
-          }
-        }
-      }
-      else if(!(decks[deck.faction][deck.agenda])){
-        decks[deck.faction][deck.agenda] = {
-          wins: deck.wins,
-          losses: deck.losses
-        }
-      }
-    })
-    this.setState({
-      deckRows: data,
-      decks: decks
-    })
+  state = {
+    factions: [
+      'Baratheon',
+      'Lannister',
+      'Stark',
+      'Greyjoy',
+      'Targaryen',
+      'Martell',
+      'Tyrell',
+      "Night's Watch"
+    ]
   }
   render(){
     let list = []
-    for(let faction in this.state.decks){
+    this.state.factions.forEach((faction) => {
       list.push(
-        <Top5Faction faction={faction} decks={this.state.decks}/>
+        <Top5Faction faction={faction}/>
       )
-    }
+    })
     return(
       <div className='content'>
         <h1>Decks</h1>
         <Route exact path='/decks' render={() => <div className='flex'>{list}</div>}/>
-        <Route exact path='/decks/:faction' render={({ match }) => <FactionDetailed match={match} decks={this.state.decks}/>}/>
-        <Route path='/decks/:faction/:agenda' render={({ match }) => <SpecificDeck match={match} decks={this.state.decks}/>}/>
+        <Route exact path='/decks/:faction' render={({ match }) => <FactionDetailed match={match}/>}/>
+        <Route path='/decks/:faction/:agenda' render={({ match }) => <SpecificDeck match={match}/>}/>
       </div>
     )
   }

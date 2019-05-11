@@ -5,8 +5,10 @@ export default class extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      sortby: 'name',
-      ascending: true
+      faction: this.props.match.params.faction,
+      sortby: 'agenda',
+      ascending: true,
+      rows: []
     }
     this.handleClick = this.handleClick.bind(this)
   }
@@ -23,20 +25,20 @@ export default class extends React.Component{
       })
     }
   }
+  async componentDidMount(){
+    const res = await fetch(`http://localhost:5000/api/decks/${this.state.faction}`)
+    const data = await res.json()
+    this.setState({
+      rows: data
+    })
+  }
   render(){
     let list = []
-    let faction = this.props.match.params.faction
-    let decks = []
-    for(let agenda in this.props.decks[faction]){
-      decks.push({
-        name: agenda,
-        percent: (100 * this.props.decks[faction][agenda].wins / (this.props.decks[faction][agenda].wins + this.props.decks[faction][agenda].losses)).toFixed(1),
-        played: this.props.decks[faction][agenda].wins + this.props.decks[faction][agenda].losses
-      })
-    }
+    let faction = this.state.faction
+    let decks = [...this.state.rows]
     decks.sort((a, b) => {
       if(this.state.ascending === true){
-        if(this.state.sortby === 'name'){
+        if(this.state.sortby === 'agenda'){
           if(a[this.state.sortby] > b[this.state.sortby]){
             return 1
           }
@@ -47,7 +49,7 @@ export default class extends React.Component{
         }
         return b[this.state.sortby] - a[this.state.sortby]
       }
-      if(this.state.sortby === 'name'){
+      if(this.state.sortby === 'agenda'){
         if(a[this.state.sortby] > b[this.state.sortby]){
           return -1
         }
@@ -60,8 +62,8 @@ export default class extends React.Component{
     })
     decks.forEach((deck) => {
       list.push(
-        <tr>
-          <td><Link to={`/decks/${faction}/${deck.name}`}>{deck.name}</Link></td>
+        <tr key={deck.agenda}>
+          <td><Link to={`/decks/${faction}/${deck.agenda}`}>{deck.agenda}</Link></td>
           <td>{deck.percent}</td>
           <td>{deck.played}</td>
         </tr>
@@ -73,7 +75,7 @@ export default class extends React.Component{
         <table>
           <thead>
             <tr>
-              <th><button onClick={this.handleClick} value='name' className='button-sort'>Agenda</button></th>
+              <th><button onClick={this.handleClick} value='agenda' className='button-sort'>Agenda</button></th>
               <th><button onClick={this.handleClick} value='percent' className='button-sort'>Win Percent</button></th>
               <th><button onClick={this.handleClick} value='played' className='button-sort'>Games Played</button></th>
             </tr>

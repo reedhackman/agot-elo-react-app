@@ -2,34 +2,27 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default class extends React.Component{
-  render(){
-    let list = []
-    let decks = []
-    let faction = this.props.faction
-    for(let agenda in this.props.decks[faction]){
-      if(this.props.decks[faction][agenda].wins + this.props.decks[faction][agenda].losses > 75){
-        decks.push({
-          agenda: agenda,
-          percent: this.props.decks[faction][agenda].wins / (this.props.decks[faction][agenda].wins + this.props.decks[faction][agenda].losses),
-          played: this.props.decks[faction][agenda].wins + this.props.decks[faction][agenda].losses
-        })
-      }
-    }
-
-    decks.sort((a,b) => {
-      return b.percent - a.percent
+  state = {
+    rows: []
+  }
+  async componentDidMount(){
+    const res = await fetch(`http://localhost:5000/api/top5faction/${this.props.faction}`)
+    const data = await res.json()
+    this.setState({
+      rows: data
     })
-
-    for(var i = 0; i < Math.min(5, decks.length); i++){
-      console.log(decks)
-      list.push(
-        <tr key={i}>
-          <td className='decks-table-name'><Link to={`/decks/${this.props.faction}/${decks[i].agenda}`}>{decks[i].agenda}</Link></td>
-          <td className='decks-table-percent'>{(100 * decks[i].percent).toFixed(1)}</td>
-          <td className='decks-table-played'>{decks[i].played}</td>
+  }
+  render(){
+    let rows = []
+    this.state.rows.forEach((d) => {
+      rows.push(
+        <tr key={d.agenda}>
+          <td className='decks-table-name'><Link to={`/decks/${this.props.faction}/${d.agenda}`}>{d.agenda}</Link></td>
+          <td className='decks-table-percent'>{d.percent}</td>
+          <td className='decks-table-played'>{d.played}</td>
         </tr>
       )
-    }
+    })
     return(
       <div className='top5faction'>
         <h2><Link to={`/decks/${this.props.faction}`}>{this.props.faction}</Link></h2>
@@ -42,7 +35,7 @@ export default class extends React.Component{
             </tr>
           </thead>
           <tbody>
-            {list}
+            {rows}
           </tbody>
         </table>
       </div>
