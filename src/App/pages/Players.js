@@ -14,7 +14,7 @@ class Players extends React.Component{
   }
 
   async componentDidMount(){
-    const res = await fetch('http://agot-elo-express-backend-env.jdzgb4sgag.us-west-2.elasticbeanstalk.com/api/players')
+    const res = await fetch('http://localhost:5000/api/players')
     const data = await res.json()
     let players = {}
     data.forEach((player) => {
@@ -31,7 +31,7 @@ class Players extends React.Component{
         }
       }
       else{
-        console.log('this is a bug')
+        console.log(player)
       }
     })
     this.setState({

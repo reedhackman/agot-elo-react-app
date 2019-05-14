@@ -8,7 +8,6 @@ export default class extends React.Component{
     }
   }
   render(){
-    let id = this.props.id
     let rows = []
     let decks = {}
     const addDeck = (faction, agenda) => {
@@ -29,7 +28,6 @@ export default class extends React.Component{
         }
       }
     }
-    console.log(this.props.games)
     this.props.games.wins.forEach((game) => {
       if(!(game.winner_faction && game.winner_agenda)) return
       if(!(decks[game.winner_faction]) || !(decks[game.winner_faction][game.winner_agenda])){

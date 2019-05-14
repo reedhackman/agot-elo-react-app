@@ -1,20 +1,22 @@
 import React from 'react'
 import Decks from './SpecificDecks.js'
 import Opponents from './SpecificOpponents.js'
+import Tournaments from './SpecificTournaments.js'
 
 export default class extends React.Component{
   constructor(props){
     super(props)
     this.state = {
       games: {},
-      id: this.props.match.params.id
+      id: null
     }
   }
   async componentDidMount(){
     const res = await fetch(`http://localhost:5000/api/games/players/${this.props.match.params.id}`)
     const data = await res.json()
     this.setState({
-      games: data
+      games: data,
+      id: this.props.match.params.id
     })
   }
   async componentDidUpdate(prevProps, prevState){
@@ -31,7 +33,6 @@ export default class extends React.Component{
   }
   render(){
     let id = this.state.id
-    console.log(this.props.players)
     if(this.props.players[id]){
       return(
         <div>
@@ -40,8 +41,9 @@ export default class extends React.Component{
           <p>Highest Rating Achieved: {Math.round(this.props.players[id].peak)}</p>
           <p>Games Played: {this.props.players[id].played}</p>
           <p>Win Percent: {(this.props.players[id].percent * 100).toFixed(1)}</p>
-          <Decks games={this.state.games} id={this.props.players[id].id}/>
-          <Opponents games={this.state.games} id={this.props.players[id].id} players={this.props.players}/>
+          <Decks games={this.state.games}/>
+          <Opponents games={this.state.games} players={this.props.players}/>
+          <Tournaments games={this.state.games}/>
         </div>
       )
     }

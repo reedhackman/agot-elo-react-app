@@ -9,7 +9,6 @@ export default class extends React.Component{
     }
   }
   render(){
-    let id = this.props.id
     let opponents = {}
     let rows = []
     const addOpponent = (p_id) => {
