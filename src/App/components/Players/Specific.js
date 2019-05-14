@@ -6,7 +6,7 @@ export default class extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      games: [],
+      games: {},
       id: this.props.match.params.id
     }
   }
