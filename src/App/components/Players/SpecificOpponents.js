@@ -18,22 +18,17 @@ export default class extends React.Component{
         losses: 0
       }
     }
-    this.props.games.forEach((game) => {
-        if(id === game.winner_id){
-          if(!(opponents[game.loser_id])){
-            addOpponent(game.loser_id)
-          }
-          opponents[game.loser_id].wins++
-        }
-        else if(id === game.loser_id){
-          if(!(opponents[game.winner_id])){
-            addOpponent(game.winner_id)
-          }
-          opponents[game.winner_id].losses++
-        }
-        else{
-          console.log('this is a bug')
-        }
+    this.props.games.wins.forEach((game) => {
+      if(!(opponents[game.loser_id])){
+        addOpponent(game.loser_id)
+      }
+      opponents[game.loser_id].wins++
+    })
+    this.props.games.losses.forEach((game) => {
+      if(!(opponents[game.winner_id])){
+        addOpponent(game.winner_id)
+      }
+      opponents[game.winner_id].losses++
     })
     for(let p_id in opponents){
       let opponent = opponents[p_id]

@@ -29,30 +29,25 @@ export default class extends React.Component{
         }
       }
     }
-    this.props.games.forEach((game) => {
-      if(!(game.winner_faction && game.winner_agenda && game.loser_faction && game.loser_agenda)){
-        return
+    console.log(this.props.games)
+    this.props.games.wins.forEach((game) => {
+      if(!(game.winner_faction && game.winner_agenda)) return
+      if(!(decks[game.winner_faction]) || !(decks[game.winner_faction][game.winner_agenda])){
+        addDeck(game.winner_faction, game.winner_agenda)
       }
-      if(game.winner_id == id){
-        if(!(decks[game.winner_faction]) || !(decks[game.winner_faction][game.winner_agenda])){
-          addDeck(game.winner_faction, game.winner_agenda)
-        }
-        decks[game.winner_faction][game.winner_agenda].wins++
-        if(!(decks[game.winner_faction][game.winner_agenda].tournaments.includes(game.tournament_id))){
-          decks[game.winner_faction][game.winner_agenda].tournaments.push(game.tournament_id)
-        }
+      decks[game.winner_faction][game.winner_agenda].wins++
+      if(!(decks[game.winner_faction][game.winner_agenda].tournaments.includes(game.tournament_id))){
+        decks[game.winner_faction][game.winner_agenda].tournaments.push(game.tournament_id)
       }
-      else if(game.loser_id == id){
-        if(!(decks[game.loser_faction]) || !(decks[game.loser_faction][game.loser_agenda])){
-          addDeck(game.loser_faction, game.loser_agenda)
-        }
-        decks[game.loser_faction][game.loser_agenda].losses++
-        if(!(decks[game.loser_faction][game.loser_agenda].tournaments.includes(game.tournament_id))){
-          decks[game.loser_faction][game.loser_agenda].tournaments.push(game.tournament_id)
-        }
+    })
+    this.props.games.losses.forEach((game) => {
+      if(!(game.loser_faction && game.loser_agenda)) return
+      if(!(decks[game.loser_faction]) || !(decks[game.loser_faction][game.loser_agenda])){
+        addDeck(game.loser_faction, game.loser_agenda)
       }
-      else{
-        console.log('file a bug')
+      decks[game.loser_faction][game.loser_agenda].losses++
+      if(!(decks[game.loser_faction][game.loser_agenda].tournaments.includes(game.tournament_id))){
+        decks[game.loser_faction][game.loser_agenda].tournaments.push(game.tournament_id)
       }
     })
     for(let faction in decks){

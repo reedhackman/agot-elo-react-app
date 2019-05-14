@@ -11,7 +11,7 @@ export default class extends React.Component{
     }
   }
   async componentDidMount(){
-    const res = await fetch(`http://agot-elo-express-backend-env.jdzgb4sgag.us-west-2.elasticbeanstalk.com/api/games/players/${this.props.match.params.id}`)
+    const res = await fetch(`http://localhost:5000/api/games/players/${this.props.match.params.id}`)
     const data = await res.json()
     this.setState({
       games: data
@@ -21,7 +21,7 @@ export default class extends React.Component{
     if(prevState.id !== this.props.match.params.id){
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-      const res = await fetch(`http://agot-elo-express-backend-env.jdzgb4sgag.us-west-2.elasticbeanstalk.com/api/games/players/${this.props.match.params.id}`)
+      const res = await fetch(`http://localhost:5000/api/games/players/${this.props.match.params.id}`)
       const data = await res.json()
       this.setState({
         id: this.props.match.params.id,
