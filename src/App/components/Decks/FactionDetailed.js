@@ -26,7 +26,7 @@ export default class extends React.Component{
     }
   }
   async componentDidMount(){
-    const res = await fetch(`http://localhost:5000/api/decks/${this.state.faction}`)
+    const res = await fetch(process.env.REACT_APP_BACKEND_URL + `api/decks/${this.state.faction}`)
     const data = await res.json()
     this.setState({
       rows: data

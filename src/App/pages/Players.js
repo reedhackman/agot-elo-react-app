@@ -14,7 +14,7 @@ class Players extends React.Component{
   }
 
   async componentDidMount(){
-    const res = await fetch('http://localhost:5000/api/players')
+    const res = await fetch(process.env.REACT_APP_BACKEND_URL + 'api/players')
     const data = await res.json()
     let players = {}
     data.forEach((player) => {

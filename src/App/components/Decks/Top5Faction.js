@@ -6,7 +6,7 @@ export default class extends React.Component{
     rows: []
   }
   async componentDidMount(){
-    const res = await fetch(`http://localhost:5000/api/top5faction/${this.props.faction}`)
+    const res = await fetch(process.env.REACT_APP_BACKEND_URL + `api/top5faction/${this.props.faction}`)
     const data = await res.json()
     this.setState({
       rows: data

@@ -12,7 +12,7 @@ export default class extends React.Component{
     }
   }
   async componentDidMount(){
-    const res = await fetch(`http://localhost:5000/api/games/players/${this.props.match.params.id}`)
+    const res = await fetch(process.env.REACT_APP_BACKEND_URL + `api/games/players/${this.props.match.params.id}`)
     const data = await res.json()
     this.setState({
       games: data,
@@ -23,7 +23,7 @@ export default class extends React.Component{
     if(prevState.id !== this.props.match.params.id){
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-      const res = await fetch(`http://localhost:5000/api/games/players/${this.props.match.params.id}`)
+      const res = await fetch(process.env.REACT_APP_BACKEND_URL + `api/games/players/${this.props.match.params.id}`)
       const data = await res.json()
       this.setState({
         id: this.props.match.params.id,
@@ -43,7 +43,7 @@ export default class extends React.Component{
           <p>Win Percent: {(this.props.players[id].percent * 100).toFixed(1)}</p>
           <Decks games={this.state.games}/>
           <Opponents games={this.state.games} players={this.props.players}/>
-          <Tournaments games={this.state.games}/>
+          <Tournaments games={this.state.games} id={this.props.match.params.id}/>
         </div>
       )
     }
